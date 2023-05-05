@@ -10,47 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_03_102449) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_211231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comment", id: :integer, default: nil, force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.text "text"
-    t.date "updatedat"
-    t.date "createdat"
-    t.integer "authorid"
-    t.integer "postid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "author_id", null: false
+    t.bigint "post_id", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
-  create_table "like", id: :integer, default: nil, force: :cascade do |t|
-    t.integer "authorid"
-    t.integer "postid"
-    t.date "createdat"
-    t.date "updatedat"
+  create_table "likes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "author_id", null: false
+    t.bigint "post_id", null: false
+    t.index ["author_id"], name: "index_likes_on_author_id"
+    t.index ["post_id"], name: "index_likes_on_post_id"
   end
 
-  create_table "post", id: :integer, default: nil, force: :cascade do |t|
-    t.integer "author_id"
+  create_table "posts", force: :cascade do |t|
     t.text "title"
-    t.date "createdat"
-    t.date "updatedat"
-    t.integer "commentscounter"
-    t.integer "likescounter"
     t.text "text"
+    t.integer "commentscounter", default: 0
+    t.integer "likescounter", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "author_id", null: false
+    t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
-  create_table "user", id: :integer, default: nil, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.text "name"
     t.text "photo"
     t.text "bio"
-    t.date "updatedat"
-    t.date "createdat"
     t.integer "postscounter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "comment", "\"user\"", column: "authorid", name: "comment_authorid_fkey", on_delete: :cascade
-  add_foreign_key "comment", "post", column: "postid", name: "comment_postid_fkey"
-  add_foreign_key "like", "\"user\"", column: "authorid", name: "like_authorid_fkey", on_delete: :cascade
-  add_foreign_key "like", "post", column: "postid", name: "like_postid_fkey", on_delete: :cascade
-  add_foreign_key "post", "\"user\"", column: "author_id", name: "post_author_id_fkey", on_delete: :cascade
+  add_foreign_key "comments", "posts", on_delete: :cascade
+  add_foreign_key "comments", "users", column: "author_id", on_delete: :cascade
+  add_foreign_key "likes", "posts", on_delete: :cascade
+  add_foreign_key "likes", "users", column: "author_id", on_delete: :cascade
+  add_foreign_key "posts", "users", column: "author_id", on_delete: :cascade
 end
