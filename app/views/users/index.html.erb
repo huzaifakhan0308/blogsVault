@@ -1,1 +1,16 @@
-<h1>Here is a list of users</h1>
+<% if @users.blank? %>
+    <p>There are no users</p>
+<% else %>
+    <ul id='current-users' >
+        <p>Current Users</p>
+        <% @users.each do |user| %>
+        <li>
+            <img src=<%= user.photo %> alt="image">
+            <div>
+                <h2><%= link_to user.name , {:action => 'show', :id => user.id} %></h2>
+                <p>Number of posts: <%= user.postscounter %> </p>
+            </div>
+        </li>
+        <% end %>
+    </ul>
+<% end %>

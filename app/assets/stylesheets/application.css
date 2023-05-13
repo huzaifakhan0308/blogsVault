@@ -1,15 +1,168 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+img {
+  width: 15vh;
+  height: 15vh;
+  border: 0.5px solid black;
+}
+
+/* user index */
+
+#current-users {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 10vh;
+  font-size: large;
+  list-style: none;
+}
+
+#post-container div {
+  display: flex;
+  flex-direction: row;
+}
+
+#current-users li {
+  display: flex;
+  flex-direction: row;
+  margin-top: 3vh;
+}
+
+#user div {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5vh;
+  height: 15vh;
+}
+
+#current-users li div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid black;
+  margin-left: 5vh;
+}
+
+#current-users li div h2 {
+  margin-left: 5vh;
+}
+
+#user p {
+  margin: 5vh;
+}
+
+#post-container div p {
+  margin-left: 5vh;
+  font-size: larger;
+}
+
+#current-users li div p {
+  margin: 5vh;
+}
+
+/* user show */
+
+#user {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 5vh;
+  font-size: large;
+}
+
+#user h1 {
+  margin-left: 5vh;
+}
+
+#user-bio {
+  margin-left: 5vh;
+  border: 1px solid black;
+  padding: 10px;
+  width: 57vh;
+}
+
+#post {
+  display: flex;
+  flex-direction: column;
+  width: 58vh;
+  margin: 5vh;
+}
+
+#post li {
+  list-style: none;
+  border: 1px solid black;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5vh;
+}
+
+#post li div {
+  display: flex;
+  flex-direction: row;
+  margin-left: 50%;
+}
+
+#post li div p {
+  margin-left: 1vh;
+}
+
+/* post index */
+
+#posts {
+  border: 1px solid black;
+  width: 60vh;
+  padding: 0;
+}
+
+#posts li {
+  width: 97.5%;
+}
+
+#comments-container {
+  font-size: larger;
+  padding-left: 10px;
+}
+
+#comments-container li {
+  border: none;
+  margin: 0;
+  padding: 10px;
+  margin-top: 1vh;
+}
+
+/* post show */
+
+#post-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  padding: 5vh;
+  width: 58vh;
+  margin: 5vh;
+}
+
+#post-container #post-body {
+  margin-top: 5vh;
+  font-size: large;
+}
+
+#post-container ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+}
+
+#post-container ul li {
+  margin-top: 1vh;
+}
