@@ -17,19 +17,21 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(
-      title: params[:post][:title],
-      text: params[:post][:text]
-    )
-    @post.user_id = params[:user_id]
+    @post = current_user.posts.new(post_params)
     @post.commentscounter = 0
     @post.likescounter = 0
     if @post.save
       flash[:notice] = 'Post was successfully created.'
-      redirect_to user_post_path(params[:user_id], @post)
+      redirect_to user_post_path(current_user, @post)
     else
       flash.now[:alert] = 'Post was not created.'
       render :new
     end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
