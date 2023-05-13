@@ -13,16 +13,18 @@
         <%= @post.title %> <br>
         <%= @post.text %>
     </p>
-
+    <%= form_with url: "/users/#{@post.author.id}/posts/#{@post.id}/likes" do |f| %>
+        <%= f.submit 'Like' %>
+    <%end%>
     <% if @post.commentscounter <= 0%>
         <p>There are no comments</p>
     <% else %>
         <ul>
-        Current Comments
+            Current Comments
             <% @post.comments.each do |comment| %>
-            <li><%= comment.text %>
-                by <%= comment.author.name %>
-            </li>
+                <li><%= comment.text %>
+                    by <%= comment.author.name %>
+                </li>
             <% end %>
         </ul>
     <% end %>

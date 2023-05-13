@@ -1,0 +1,17 @@
+<h1>Hello i am new page</h1>
+<section class="create-form">
+  <h1>Create a post</h1>
+  <%= form_with model: @post, url: user_posts_path(current_user), method: :post, local: true, scope: :post do |form| %>
+    <li>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </li>
+
+    <li>
+      <%= form.label :text %>
+      <%= form.text_field :text %>
+    </li>
+
+    <%= form.submit "Add Post" %>
+  <% end %>
+</section>

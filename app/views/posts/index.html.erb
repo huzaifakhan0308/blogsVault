@@ -17,8 +17,8 @@
                         <%= post.title %>
                     </h3>
                     <div>
-                        <p>Comments: <%= post.commentscounter %></p>
-                        <p>Likes: <%= post.likescounter %></p>
+                        <p>Comments: <%= post.commentscounter|| 0 %></p>
+                        <p>Likes: <%= post.likescounter || 0%></p>
                     </div>
                 </li>
                 <% if post.commentscounter <= 0 %>
