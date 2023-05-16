@@ -3,17 +3,7 @@
     <%= form_with model: @comment, url: user_post_comments_path, method: :post, local: true, scope: :comment do |form| %>
         <div>
             <li>
-            <%= form.label :title %>
-            </li>
-            <li>
-            <%= form.text_field :title %>
-            </li>
-        </div>
-        <div>
-            <li>
             <%= form.label :text %>
-            </li>
-            <li>
             <%= form.text_field :text %>
             </li>
         </div>

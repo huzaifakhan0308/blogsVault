@@ -29,4 +29,9 @@
             <% end %>
         </ul>
     <% end %>
+    <%= link_to new_user_post_comment_path(@user, @post),class:"new-post-btn" do%>
+        <button>
+            Add comments
+        </button>
+    <% end %>
 </section>

@@ -1,5 +1,5 @@
 module ApplicationHelper
   def current_user
-    User.first
+    User.second
   end
 end
