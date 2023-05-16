@@ -11,9 +11,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    respond_to do |format|
-      format.html { render :new, locals: { post: @post } }
-    end
+    @current_user = params[:user_id]
   end
 
   def create
