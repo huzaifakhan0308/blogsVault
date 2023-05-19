@@ -20,8 +20,8 @@
         <% end %>
     </ul>
     <div class="sign_out_button">
-    <button>
-        <%= link_to 'Sign out',  destroy_user_session_path, method: :delete %>
-    </button>
+        <button>
+            <%= link_to 'Sign out', sign_out_user_path(current_user.id), method: :get %>
+        </button>
     </div>
 <% end %>

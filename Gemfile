@@ -75,3 +75,5 @@ end
 gem 'rails-controller-testing'
 
 gem 'devise'
+
+gem 'cancancan'

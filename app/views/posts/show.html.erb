@@ -2,7 +2,7 @@
 <section id='post-container'>
     <div id='post-header'>
         <p>
-            Post # <%= @post.id %> <br>
+            Post_id # <%= @post.id %> <br>
             by 
             <% if @user %>
                 <%= @user.name %>
@@ -14,17 +14,26 @@
         <%= @post.title %> <br>
         <%= @post.text %>
     </p>
-    <%= form_with url: "/users/#{@post.author.id}/posts/#{@post.id}/likes" do |f| %>
+    <%= form_with url: user_post_likes_path(post_id: @post.id) do |f| %>
         <%= f.submit 'Like' %>
     <%end%>
-    <% if @post.commentscounter <= 0%>
+    <% if @post.commentscounter <= 0 %>
         <p>There are no comments</p>
     <% else %>
         <ul>
             Current Comments
             <% @post.comments.each do |comment| %>
-                <li><%= comment.text %>
-                    by <%= comment.author.name %>
+                <li>
+                <span>Username:</span><%=comment.author.name %>
+                <span>Comment:</span><%=comment.text %>
+                <% if can? :destroy, comment %>
+                    <button>
+                    <%= link_to 'X',user_post_comment_path(@user, comment.post, comment.id) , data: {
+                                    turbo_method: :delete,
+                                    turbo_confirm: "Are you sure?"
+                                } %>
+                    </button>
+                <% end %>
                 </li>
             <% end %>
         </ul>
@@ -34,4 +43,14 @@
             Add comments
         </button>
     <% end %>
+    <div class="button_holder">
+        <% if can? :destroy, @post%>
+        <button>
+            <%= link_to 'Delete post', user_post_path(@user,@post), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                    } %>
+        </button>
+        <% end %>
+    </div>
 </section>

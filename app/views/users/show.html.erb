@@ -34,4 +34,9 @@
     <%= link_to({ controller: "posts", action: "index", user_id: @user.id }) do %>
         <%= button_to "See all posts" %>
     <% end %>
+    <div>
+        <button>
+            <%= link_to 'Back', :back %>
+        </button>
+    </div>
 </section>

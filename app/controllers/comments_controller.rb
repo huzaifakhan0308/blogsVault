@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
+
   def new
     @comment = Comment.new
   end
@@ -13,6 +15,12 @@ class CommentsController < ApplicationController
       flash.now[:alert] = 'Comment was not created.'
       render 'posts/show'
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to request.referrer
   end
 
   private

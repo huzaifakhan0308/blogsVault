@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @user = User.find(params[:user_id])
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @current_user = params[:user_id]
+    @user = User.find(params[:user_id])
   end
 
   def create
@@ -27,6 +27,13 @@ class PostsController < ApplicationController
       flash.now[:alert] = 'Post was not created.'
       render :new
     end
+  end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
+    @post.destroy
+    redirect_to user_posts_path(@user), notice: 'Post was successfully deleted.'
   end
 
   private
