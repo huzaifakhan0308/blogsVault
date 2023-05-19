@@ -71,7 +71,6 @@ Example command:
   bundle install (install all dependencies)
 
 ```
-
 ### Usage
 
 To run the project redirecting to the root directory of the project and run the following command:
