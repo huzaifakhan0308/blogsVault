@@ -1,6 +1,15 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
 
+  def index
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
+    respond_to do |format|
+      format.json { render json: @comments }
+    end
+  end
+
   def new
     @comment = Comment.new
   end
@@ -8,12 +17,14 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = params[:post_id]
-    if @comment.save
-      flash[:notice] = 'Comment was successfully created.'
-      redirect_to user_post_path(params[:user_id], params[:post_id])
-    else
-      flash.now[:alert] = 'Comment was not created.'
-      render 'posts/show'
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to request.referrer, notice: 'Comment was successfully created.' }
+        format.json { render Json: @comment, status: :created }
+      else
+        format.html { render :new }
+        format.json { render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -4,11 +4,22 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
+
+    respond_to do |format|
+      format.html
+      format.xml { render xml: @posts }
+      format.json { render json: @posts }
+    end
   end
 
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.xml { render xml: @post.comments }
+      format.json { render json: @post.comments }
+    end
   end
 
   def new
