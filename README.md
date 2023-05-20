@@ -1,7 +1,3 @@
-# blogsVault
-
-<a name="readme-top"></a>
-
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
@@ -17,7 +13,6 @@
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-
 - [📝 License](#license)
 
 # 📰 Blog App <a name="about-project"></a>
