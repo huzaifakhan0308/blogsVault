@@ -1,27 +1,48 @@
-<% if @users.empty? %>
+<div id="user-index">
+  <% if @users.empty? %>
     <p>There are no users</p>
-<% else %>
-    <p class="current-user">Logged in as: <%= current_user.name %></p>
-    <%= link_to new_user_post_path(user_id: current_user.id),class:"new-post-btn" do%>
-        <button>
-        Create New Post
-        </button>
-    <% end %>
-    <ul id='current-users' >
-        <p>Current Users</p>
-        <% @users.each do |user| %>
-        <li>
-            <img src=<%= user.photo %> alt="image">
-            <div>
-                <h2><%= link_to user.name , {:action => 'show', :id => user.id} %></h2>
-                <p>Number of posts: <%= user.postscounter %> </p>
-            </div>
-        </li>
-        <% end %>
-    </ul>
-    <div class="sign_out_button">
-        <button>
-            <%= link_to 'Sign out', sign_out_user_path(current_user.id), method: :get %>
-        </button>
+  <% else %>
+    <div class="header">
+      <p class="current-user">Logged in as: <%= current_user.name %></p>
+      <%= button_to 'Sign out', sign_out_user_path(current_user), method: :get, data: { confirm: 'Are you sure you want to sign out?' } %>
     </div>
-<% end %>
+    <%= link_to new_user_post_path(user_id: current_user.id), class: "new-post-btn-link" do %>
+      <button class="new-post-btn">Create New Post</button>
+    <% end %>
+    <ul>
+      <li id="img-form">
+        <%= form_with(model: current_user, url: user_path(current_user), local: true, method: :patch, multipart: true) do |form| %>
+            <div class="field">
+              update your profile image <br>
+                <%= form.file_field :photo %>
+            </div>
+            <div class="actions">
+                <%= form.submit "Upload Photo" %>
+            </div>
+        <% end %>
+      </li>
+      <li>
+        <p id="current-users">Current Users</p>
+      </li>
+      <li>
+        <% @users.each do |user| %>
+          <%= link_to user_path(user) do %>
+            <div id="users">
+              <div id="image">
+                <% if user.photo.present? %>
+                  <%= image_tag url_for(user.photo), alt: "User Image" %>
+                <% else %>
+                  <span>No Photo</span>
+                <% end %>
+              </div>
+              <div id="info">
+                <h2>User: <%= user.name %></h2>
+                <p>Number of posts: <%= user.postscounter %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</div>

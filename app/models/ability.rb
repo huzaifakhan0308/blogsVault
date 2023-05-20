@@ -6,6 +6,7 @@ class Ability
 
     can :read, :all
     can :create, [Comment, Post]
+    can :update, User, id: user.id
 
     if user.role == 'admin'
       can :manage, :all

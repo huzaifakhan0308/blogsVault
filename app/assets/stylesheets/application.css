@@ -1,168 +1,511 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Combo&family=Poppins&display=swap");
+
 * {
   padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  height: 100%;
+  width: 100%;
 }
 
 body {
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+header {
+  color: red;
+}
+
+/* stylelint-disable no-descending-specificity */
+
+/* app/devise/sessions/new.html.erb */
+
+#log-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
+  min-height: 70vh;
+  border: 2px solid rgba(0, 0, 0, 0.231);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#log-in-container h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.133);
+  margin-top: 7%;
+  padding-bottom: 3%;
   width: 100%;
 }
 
-img {
-  width: 15vh;
-  height: 15vh;
-  border: 0.5px solid black;
-}
-
-/* user index */
-
-#current-users {
+#log-in-container ul {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  margin-left: 10vh;
-  font-size: large;
+  justify-content: center;
+  align-items: center;
   list-style: none;
 }
 
-#post-container div {
+#log-in-container ul li {
+  display: flex;
+  width: 100%;
+  margin-top: 7%;
+}
+
+#log-in-container ul li input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.268);
+  outline: none;
+}
+
+#log-in-container ul li.actions {
+  display: flex;
+  width: 15vh;
+  height: 5vh;
+  cursor: pointer;
+  margin-bottom: 10%;
+}
+
+#log-in-container ul li.actions .custom-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.441);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+#log-in-container ul li.actions .custom-button:hover {
+  background-color: rgba(0, 0, 0, 0.62);
+}
+
+/* app/user/index.html.erb */
+
+#user-index {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 96%;
+  min-height: 100vh;
+}
+
+#user-index .header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: larger;
+  font-weight: bold;
+  margin: 3vh 0 3vh 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.649);
+}
+
+#user-index .header .current-user {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+}
+
+#user-index .header button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.441);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 20vh;
+  height: 5vh;
+  margin-bottom: 1vh;
+}
+
+#user-index .header button:hover {
+  background-color: rgba(0, 0, 0, 0.62);
+}
+
+#user-index .new-post-btn-link {
+  text-decoration: none;
+}
+
+#user-index .new-post-btn-link .new-post-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.441);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 20vh;
+  height: 5vh;
+}
+
+#user-index .new-post-btn-link .new-post-btn:hover {
+  background-color: rgba(0, 0, 0, 0.62);
+}
+
+#user-index ul {
+  list-style: none;
+}
+
+#user-index ul li {
+  margin-top: 5vh;
+}
+
+#user-index ul #img-form {
+  display: flex;
+  flex-direction: column;
+  width: 40vh;
+  border: 2px solid black;
+}
+
+#user-index ul #img-form div {
+  margin: 1vh;
+}
+
+#user-index ul li #current-users {
+  font-size: x-large;
+  border-bottom: 1px solid black;
+}
+
+#user-index ul li #users {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 20vh;
+  width: 50%;
+  margin-top: 2vh;
+  border: 1px solid black;
+}
+
+#user-index ul li #users #image {
+  height: 20vh;
+  width: 20vh;
+}
+
+#user-index ul li #users #info {
+  margin-left: 20%;
+}
+
+/* app/user/show.html.erb */
+
+/* app/views/post/index.html.erb */
+
+#user-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 96%;
+  min-height: 100vh;
+}
+
+#user-show .current-user {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+  margin: 3vh 0 3vh 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.649);
+  width: 100%;
+}
+
+#user-show #user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 2px solid black;
+  height: 30vh;
+  width: 60%;
+}
+
+#user-show #user #image-div {
+  height: 100%;
+  width: 30vh;
+}
+
+#user-show #user #info {
+  margin-left: 10vh;
+  font-size: larger;
+}
+
+#user-show #posts {
+  margin-top: 3vh;
+  width: 100%;
+}
+
+#user-show #posts span {
+  font-size: x-large;
+  font-weight: bolder;
+  border-bottom: 1px solid black;
+}
+
+#user-show #posts ul {
+  list-style: none;
+}
+
+#user-show #posts ul li {
+  border: 2px solid black;
+  margin-top: 2vh;
+  padding: 10px;
+  font-size: larger;
+  width: 40%;
+}
+
+#user-show #posts ul li div {
   display: flex;
   flex-direction: row;
 }
 
-#current-users li {
+#user-show #posts #buttons-div {
   display: flex;
   flex-direction: row;
   margin-top: 3vh;
 }
 
-#user div {
-  border: 1px solid black;
+#user-show #posts #buttons-div button {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  margin-left: 5vh;
-  height: 15vh;
-}
-
-#current-users li div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: 2px solid black;
-  margin-left: 5vh;
-}
-
-#current-users li div h2 {
-  margin-left: 5vh;
-}
-
-#user p {
-  margin: 5vh;
-}
-
-#post-container div p {
-  margin-left: 5vh;
-  font-size: larger;
-}
-
-#current-users li div p {
-  margin: 5vh;
-}
-
-/* user show */
-
-#user {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  margin: 5vh;
-  font-size: large;
-}
-
-#user h1 {
-  margin-left: 5vh;
-}
-
-#user-bio {
-  margin-left: 5vh;
-  border: 1px solid black;
-  padding: 10px;
-  width: 57vh;
-}
-
-#post {
-  display: flex;
-  flex-direction: column;
-  width: 58vh;
-  margin: 5vh;
-}
-
-#post li {
-  list-style: none;
-  border: 1px solid black;
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 5vh;
-}
-
-#post li div {
-  display: flex;
-  flex-direction: row;
-  margin-left: 50%;
-}
-
-#post li div p {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.441);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 20vh;
+  height: 5vh;
+  margin-bottom: 1vh;
   margin-left: 1vh;
 }
 
-/* post index */
-
-#posts {
-  border: 1px solid black;
-  width: 60vh;
-  padding: 0;
+#user-show #posts #buttons-div button:hover {
+  background-color: rgba(0, 0, 0, 0.62);
 }
 
-#posts li {
-  width: 97.5%;
-}
+/* app/views/post/index.html.erb */
 
-#comments-container {
-  font-size: larger;
-  padding-left: 10px;
-}
-
-#comments-container li {
-  border: none;
-  margin: 0;
+#user-show #posts ul li #comments-container {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.67);
+}
+
+/* app/views/post/new */
+
+#post-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+#post-new .current-user {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+  margin: 3vh 0 3vh 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.649);
+  width: 100%;
+}
+
+#post-new #create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  width: 50%;
+  height: 40vh;
+  padding: 10px;
+}
+
+#post-new #create-form ul {
+  list-style: none;
+}
+
+#post-new #create-form ul li {
   margin-top: 1vh;
 }
 
-/* post show */
+#post-new #create-form ul li input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.268);
+  outline: none;
+}
 
-#post-container {
+#post-new #create-form ul li.actions {
+  display: flex;
+  width: 15vh;
+  height: 5vh;
+  cursor: pointer;
+  margin-top: 10%;
+}
+
+#post-new #create-form ul li.actions .custom-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.441);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+#post-new #create-form ul li.actions .custom-button:hover {
+  background-color: rgba(0, 0, 0, 0.62);
+}
+
+/* app/views/post/show */
+
+#post-show {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  padding: 5vh;
-  width: 58vh;
-  margin: 5vh;
+  align-items: center;
+  width: 96%;
+  min-height: 100vh;
 }
 
-#post-container #post-body {
-  margin-top: 5vh;
-  font-size: large;
+#post-show .current-user {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-weight: bold;
+  margin: 3vh 0 3vh 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.649);
+  width: 100%;
 }
 
-#post-container ul {
+#post-show #post-container {
   display: flex;
   flex-direction: column;
-  margin-top: 5vh;
+  border: 2px solid black;
+  padding: 10px;
+  width: 60%;
 }
 
-#post-container ul li {
-  margin-top: 1vh;
+#post-show #post-container #post-header {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+#post-show #post-container #post-body #title {
+  font-size: larger;
+  font-weight: bold;
+}
+
+#post-show #post-container #cmnt-like {
+  border-top: 1px solid black;
+}
+
+#post-show #post-container ul {
+  list-style: decimal;
+  margin-left: 1vh;
+}
+
+#post-show #post-container #add-comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.441);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 20vh;
+  height: 5vh;
+  margin-bottom: 1vh;
+  margin-left: 1vh;
+}
+
+#post-show #post-container #add-comments:hover {
+  background-color: rgba(0, 0, 0, 0.62);
+}
+
+#post-show #post-container .button_holder button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.441);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  width: 20vh;
+  height: 5vh;
+  margin-bottom: 1vh;
+  margin-left: 1vh;
+}
+
+#post-show #post-container .button_holder button:hover {
+  background-color: rgba(0, 0, 0, 0.62);
+}
+
+/* app/views/comments/new.html.erb */
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  padding: 10px;
+  width: 30%;
+  height: 30vh;
+}
+
+.comment-form input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.comment-form .actions {
+  display: flex;
+  width: 20vh;
+  height: 5vh;
+  cursor: pointer;
+  margin-top: 10%;
+}
+
+.comment-form .actions .custom-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.441);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.comment-form .actions .custom-button:hover {
+  background-color: rgba(0, 0, 0, 0.62);
 }

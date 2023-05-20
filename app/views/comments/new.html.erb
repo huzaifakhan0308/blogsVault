@@ -2,12 +2,11 @@
     <h1>Add a new comment</h1>
     <%= form_with model: @comment, url: user_post_comments_path, method: :post, local: true, scope: :comment do |form| %>
         <div>
-            <li>
             <%= form.label :text %>
             <%= form.text_field :text %>
-            </li>
         </div>
-
-        <%= form.submit "Add a comment" %>
+        <div class="actions">
+            <%= form.submit "Add a comment", class: "custom-button"%>
+        </div>
     <% end %>
 </div>

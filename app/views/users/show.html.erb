@@ -1,42 +1,45 @@
-<p class="current-user">Logged in as: <%= current_user.name %></p>
-
-<section id='user'>
+<div id="user-show">
+    <p class="current-user">Logged in as: <%= current_user.name %></p>
     <% if @user %>
-        <img src=<%= @user.photo %> alt="image">
-        <div>
-            <h1><%= @user.name%></h1>
-            <p>Number of post: <%= @user.postscounter%></p>
-        </div>
+        <section id='user'>
+            <div id="image-div">
+                <% if @user.photo.present? %>
+                    <%= image_tag url_for(@user.photo), alt: "User Image" %>
+                <% else %>
+                <span>No Photo</span>
+                <% end %>
+            </div>
+            <div id="info">
+                <h1>Name: <%= @user.name%></h1>
+                <span>Bio:<%= @user.bio %></span><br>
+                <span>Total posts: <%= @user.postscounter%></span>
+            </div>
+        </section>
     <% end %>
-</section>
-<p id='user-bio'>
-    Bio <br>
-    <%= @user.bio %>
-</p>
-<section id='post'>
-    <ul>
-        <% @posts.each_with_index do |post,index| %>
-            <%= link_to({ controller: "posts", action: "show", user_id: @user.id, id: post.id }) do %>
-                <li>
-                    <p>Post #<%= index + 1%></p>
-                    <h3>
-                        <%= post.title %> <br>
-                    </h3>
-                    <div>
-                        <p>Comments: <%= post.commentscounter %>,</p>
-                        <p>Likes: <%= post.likescounter %></p>
-                    </div>
-                </li>
+    <section id='posts'>
+        <span>Posts</span>
+        <ul>
+            <% @posts.each_with_index do |post,index| %>
+                <%= link_to({ controller: "posts", action: "show", user_id: @user.id, id: post.id }) do %>
+                    <li>
+                        <p>Post #<%= index + 1%></p>
+                        <h3>
+                            Title: <%= post.title %>
+                        </h3>
+                        <div>
+                            <p>Comments: <%= post.commentscounter %>, Likes: <%= post.likescounter %></p>
+                        </div>
+                    </li>
+                <% end %>
             <% end %>
-        <% end %>
-    </ul>
-
-    <%= link_to({ controller: "posts", action: "index", user_id: @user.id }) do %>
-        <%= button_to "See all posts" %>
-    <% end %>
-    <div>
-        <button>
-            <%= link_to 'Back', :back %>
-        </button>
-    </div>
-</section>
+        </ul>
+        <div id="buttons-div">
+            <%= link_to({ controller: "posts", action: "index", user_id: @user.id }) do %>
+                <button>See all posts</button>
+            <% end %>
+            <%= link_to :back do %>
+                <button>back</button>
+            <% end %>
+        </div>
+    </section>
+</div>

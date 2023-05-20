@@ -11,11 +11,11 @@
   </head>
 
   <body>
-    <% flash.each do |key, message| %>
-      <div class="flash-message">
-        <%= message %>
-      </div>
-    <% end %>
+    <header>
+      <% flash.each do |key, message| %>
+          <%= message %>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
